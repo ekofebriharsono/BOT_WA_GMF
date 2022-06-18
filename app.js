@@ -6,6 +6,9 @@ const http = require('http');
 const app = express();
 const server = http.createServer(app);
 
+let name = null;
+let flag_name_question = false;
+
 app.use(express.json());
 app.use(express.urlencoded({
     extended : true
@@ -41,17 +44,30 @@ client.on('ready', () => {
 });
 
 client.on('message', msg => {
+    
+    let result = null;
     let message = msg.body;
-    message = message.toLowerCase();
+    message = message.toLowerCase().trim();
 
-    if (message == 'hai') {
-        msg.reply('Im a bot from *GMF Aero Asia*');
+    if(message.includes('Hai')){
+        msg.reply('Hello, Iam bot from *GMF Aero Asia*');
     }
+
 });
 
 app.post('/send_message', (req,res) => {
     const number = req.body.number;
-    const message = req.body.message;
+    const msg = req.body.message;
+
+    let message = null;
+    let result = msg;
+    result.toLowerCase();
+
+    if(result.includes('order')){
+        message = "Yes this is order";
+    } else {
+        message = "not order";
+    }
 
     client.sendMessage(number, message).then(response => {
         res.status(200).json({
