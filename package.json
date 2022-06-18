@@ -1,0 +1,24 @@
+{
+  "name": "bot_wa_gmf",
+  "version": "1.0.0",
+  "description": "Bot WhatsApp GMF Aero Asia",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ekofebriharsono/BOT_WA_GMF.git"
+  },
+  "keywords": [
+    "Bot",
+    "WhatsApp",
+    "GMF"
+  ],
+  "author": "Eko Febri Harsono",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ekofebriharsono/BOT_WA_GMF/issues"
+  },
+  "homepage": "https://github.com/ekofebriharsono/BOT_WA_GMF#readme"
+}
