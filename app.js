@@ -2,6 +2,7 @@ const { Client, LocalAuth } = require('whatsapp-web.js');
 const express = require('express');
 const qrcode = require('qrcode-terminal');
 const http = require('http');
+const axios = require('axios');
 
 const app = express();
 const server = http.createServer(app);
@@ -65,6 +66,14 @@ app.post('/send_message', (req,res) => {
 
     if(result.includes('order')){
         message = "Yes this is order";
+        axios
+            .get('http://localhost/rest_api_testing/json_object.php')
+            .then(res => {
+                console.log(res.data.nama);
+            })
+            .catch(error => {
+                console.error(error);
+            });
     } else {
         message = "not order";
     }
