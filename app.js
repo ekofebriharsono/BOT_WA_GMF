@@ -48,9 +48,9 @@ client.on('message', msg => {
     
     let result = null;
     let message = msg.body;
-    message = message.toLowerCase().trim();
+    message = message.toLowerCase();
 
-    if(message.includes('Hai')){
+    if(message.includes('hai')){
         msg.reply('Hello, Iam bot from *GMF Aero Asia*');
     }
 
@@ -66,10 +66,22 @@ app.post('/send_message', (req,res) => {
 
     if(result.includes('order')){
         message = "Yes this is order";
+
+        var postData = {
+            email: "test@test.com",
+            password: "password"
+          };
+
+        const headers = {
+            'Content-Type': 'application/x-www-form-urlencoded',
+            'Authorization': 'Basic TjM0NzExMyA6QWN0aXZhdGUy'
+          }          
+
         axios
-            .get('http://localhost/rest_api_testing/json_object.php')
+            .post('http://sapgmfdpi.gmf-aeroasia.co.id:53000/RESTAdapter/Get_Order'
+            , postData, headers)
             .then(res => {
-                console.log(res.data.nama);
+                console.log(res.data);
             })
             .catch(error => {
                 console.error(error);
